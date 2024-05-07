@@ -17,5 +17,12 @@
 /**
  * 1. set cookies with http only. for development secure: false
  * 2. cors s
+ * //middle ware
+app.use(cors({
+  origin: ['http://localhost:5173'],
+  credentials: true
+}));
+ * 
+ * 
  * 3. client side axios setting
  */
