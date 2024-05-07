@@ -25,4 +25,5 @@ app.use(cors({
  * 
  * 
  * 3. client side axios setting
+ * in axios set withCredentials: true
  */

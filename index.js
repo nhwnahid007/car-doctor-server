@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const jwt = require('jsonwebtoken')
+const cookieParser = require('cookie-parser');
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 require("dotenv").config();
 const app = express();
@@ -12,7 +13,7 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
-
+app.use(cookieParser());
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.omy4kgv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
@@ -69,6 +70,7 @@ async function run() {
 
     app.get("/bookings", async (req, res) => {
       console.log(req.query.email);
+      console.log('tok tok token',req.cookies.token)
       let query = {};
       if (req.query?.email) {
         query = { email: req.query.email };
